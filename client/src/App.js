@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Navbar, NavbarBrand, NavItem, NavbarText, NavLink, Nav, Form, Input, Button} from 'reactstrap'
 import {connect} from 'react-redux'
 import { startGetTweets } from './actions/tweetsAction';
+import TweetDesign from './components/TweetDesign';
 
 class App extends React.Component{
   constructor(){
@@ -46,6 +47,13 @@ class App extends React.Component{
               </NavItem>
             </Nav>
         </Navbar>
+      </div>
+      <div>
+        <br></br>
+        <br></br>
+        <TweetDesign tweet = {this.props.tweets} />
+        {this.props.tweets && this.props.tweets.map(tweet => <TweetDesign tweet = {tweet} />
+        ) }
       </div>
       </div>
     )
