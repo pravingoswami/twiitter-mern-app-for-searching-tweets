@@ -2,12 +2,13 @@ import React from  'react'
 import { Container, Media, Row, Col } from 'reactstrap'
 import './tweet.css'
 
+
 function TweetDesign(props){
     return(
 
         <div>
             {props.tweet && (
-                 <Container >{console.log(props.tweet)}
+                 <Container >
                      {
                          props.tweet.user && (
                              <Row style = {{border : "1px solid rgba(130, 147, 160, 0.5)", padding : "20px"}} >

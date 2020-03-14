@@ -11,6 +11,9 @@ app.use(cors())
 setupDB()
 app.use('/', router)
 
-app.listen(port, () => {
+
+const server = app.listen(port, () => {
     console.log('listening on port', port)
 })
+
+module.exports = server

@@ -9,6 +9,8 @@ export const setTweets = (tweets) => {
 
 export const startGetTweets = (search) => {
     return (dispatch) => {
+
+
         axios.get(`http://localhost:3023/tweets?search=${search}`)
             .then(response => {
                 console.log(response.data.statuses)

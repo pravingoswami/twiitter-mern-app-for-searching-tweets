@@ -1,5 +1,6 @@
 const Twitter = require('twitter')
 
+
 module.exports.tweetsList = (req, res) => {
     const search = req.query.search
 
@@ -12,19 +13,11 @@ module.exports.tweetsList = (req, res) => {
 
     // ref - https://www.npmjs.com/package/twitter
 
-    client.get('search/tweets', {q : search})
-        .then(tweets => res.json(tweets) )
+    client.get('search/tweets', {q : search, count : 200})
+        .then(tweets => {
+            res.json(tweets) 
+        } 
+            )
         .catch(err => res.json(err))
 
-    // client.stream('statuses/filter', {track: search},  function(stream) {
-    //     stream.on('data', function(tweet) {
-    //         console.log(tweet.text);
-    //         res.json(tweet)
-    //     });
-        
-    //     stream.on('error', function(error) {
-    //         console.log(error);
-    //         // res.json(error)
-    //     });
-    //     });
 }   
