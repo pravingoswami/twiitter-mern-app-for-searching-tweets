@@ -15,4 +15,16 @@ module.exports.tweetsList = (req, res) => {
     client.get('search/tweets', {q : search})
         .then(tweets => res.json(tweets) )
         .catch(err => res.json(err))
+
+    // client.stream('statuses/filter', {track: search},  function(stream) {
+    //     stream.on('data', function(tweet) {
+    //         console.log(tweet.text);
+    //         res.json(tweet)
+    //     });
+        
+    //     stream.on('error', function(error) {
+    //         console.log(error);
+    //         // res.json(error)
+    //     });
+    //     });
 }   
