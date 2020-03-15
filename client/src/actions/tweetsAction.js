@@ -1,4 +1,5 @@
 import axios from 'axios'
+import io from 'socket.io-client'
 
 export const setTweets = (tweets) => {
     return {
@@ -9,13 +10,13 @@ export const setTweets = (tweets) => {
 
 export const startGetTweets = (search) => {
     return (dispatch) => {
-
-
-        axios.get(`http://localhost:3023/tweets?search=${search}`)
+        axios.post(`http://localhost:3023/tweets`, {search})
             .then(response => {
-                console.log(response.data.statuses)
+                // storing all the tweets into the store
                 dispatch(setTweets(response.data.statuses))
             })
             .catch(err => alert(err))
     }
+
+
 }

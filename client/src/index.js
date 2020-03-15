@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
+import io from 'socket.io-client'
+import {setNotification} from './actions/notificationTweets'
 
 const store = configureStore()
 

@@ -1,19 +1,21 @@
-const express = require('express')
-const router = require('./config/routes')
-const setupDB = require('./config/setupDB')
+const express = require('express');
+const http = require('http');
+const socketio = require('socket.io');
+const bodyParser = require('body-parser');
+const port = 3023
+const app = express();
 const cors = require('cors')
 
-const app = express()
 
-const port = 3023
+const server = http.createServer(app);
+const io = socketio(server);
 
 app.use(cors())
-setupDB()
-app.use('/', router)
+app.use(bodyParser.json());
 
 
-const server = app.listen(port, () => {
+require('./config/routes')(app, io);
+
+server.listen(port, () => {
     console.log('listening on port', port)
-})
-
-module.exports = server
+});
